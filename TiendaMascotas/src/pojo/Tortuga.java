@@ -40,4 +40,8 @@ public class Tortuga {
 	public void setTipoAgua(String tipoAgua) {
 		this.tipoAgua = tipoAgua;
 	}
+	@Override
+	public String toString() {
+		return "\n" +"--- Tortuga ---" + "\n" + "idTortuga: " + idTortuga + "\n" + "especie: " + especie + "\n" + "tipoAgua: " + tipoAgua + "\n";
+	}
 }

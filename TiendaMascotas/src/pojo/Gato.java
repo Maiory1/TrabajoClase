@@ -93,6 +93,6 @@ public class Gato {
 
 	@Override
 	public String toString() {
-		return "Gato [idCollarG=" + idCollarG + ", nomGato=" + nomGato + ", razaG=" + razaG + "]";
+		return "\n" + "--- Gato ---" + "\n" + "idCollarG: " + idCollarG + "\n" + "nomGato: " + nomGato + "\n" + " razaG: " + razaG + ": \n";
 	}
 }

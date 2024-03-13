@@ -12,13 +12,10 @@ import utils.DBAccessSelects;
  */
 public class GestorTablaGatos {
 
-	public void menuVisual() {
+	public void menuVisualGatos() {
 		
 		List<Gato> gatos = verGatos();
 		
-		List<Perro> perros = verPerros();
-		
-		List<Tortuga> tortugas = verTortugas();
 	}
 	
 	private List<Gato> verGatos() {
@@ -35,31 +32,4 @@ public class GestorTablaGatos {
 		return gatos;
 	}
 	
-	private List<Perro> verPerros() {
-		List<Perro> perros = new DBAccessSelects().obtenerPerros();
-		
-		if (!perros.isEmpty()) {
-			for (Perro perro : perros ) {
-				System.out.print(perro.toString());
-			}
-		}else {
-			//nothing
-		}
-		
-		return perros;
-	}
-	
-	private List<Tortuga> verTortugas() {
-		List<Tortuga> tortugas = new DBAccessSelects().obtenerTortugas();
-		
-		if (!tortugas.isEmpty()) {
-			for (Tortuga tortuga : tortugas ) {
-				System.out.print(tortuga.toString());
-			}
-		}else {
-			//nothing
-		}
-		
-		return tortugas;
-	}
 }

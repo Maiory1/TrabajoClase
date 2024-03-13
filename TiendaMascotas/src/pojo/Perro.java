@@ -107,7 +107,7 @@ public class Perro {
 
 	@Override
 	public String toString() {
-		return "Perro [idCollarP=" + idCollarP + ", nomPerro=" + nomPerro + ", razaP=" + razaP + "vacunado=" + vacunado + "]";
+		return "\n" + "--- Perro ---" + "\n" + "idCollarP: " + idCollarP + "\n" + "nomPerro: " + nomPerro + "\n" + "razaP:" + razaP + "\n" + "vacunado=" + vacunado + "\n";
 	}
 	
 }
