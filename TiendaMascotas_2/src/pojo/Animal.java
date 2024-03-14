@@ -2,7 +2,7 @@ package pojo;
 
 import java.util.Objects;
 
-public class Animal {
+public abstract class Animal {
 	private int id = 0;
 	
 	public int getId() {

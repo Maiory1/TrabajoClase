@@ -2,7 +2,7 @@ package pojo;
 
 import java.util.Objects;
 
-public class Mamifero extends Animal {
+public abstract class Mamifero extends Animal {
 	
 	private String nombre = null;
 	private String raza = null;

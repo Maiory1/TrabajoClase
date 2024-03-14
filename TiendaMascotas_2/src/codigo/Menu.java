@@ -26,6 +26,10 @@ public class Menu {
 	public static final int NUMERO_OPCIONES_MENU_ANIMALES = 3;
 
 	public Menu() {
+		gestorPerros = new GestorTablaPerros();
+		gestorGatos = new GestorTablaGatos();
+		gestorTortugas = new GestorTablaTortugas();
+		
 		teclado = new Scanner(System.in);
 	}
 
@@ -57,68 +61,44 @@ public class Menu {
 
 	private void escribirMenuInicial() {
 		System.out.println(" ");
-		System.out.println("---- MENU ----");
+		System.out.println("---------------- MENU ----------------");
 		System.out.println("---- 0 - SALIR ");
 		System.out.println("---- 1 - Mostrar mascotas ");
 		System.out.println("---- 2 - Mostrar mascotas por tipo ");
-		System.out.println("--------------");
+		System.out.println("---- 3 - Mostrar mascotas por Id ");
+		System.out.println("--------------------------------------");
 	}
 	
-	private void escribirMenuAnimales() {
-		System.out.println("¿Qué información quieres ver?");
-		System.out.println("0. Volver");
-		System.out.println("1. Gatos");
-		System.out.println("2. Perros");
-		System.out.println("3. Tortugas");
-	}
-	
-	private int opcionMenuAnimales() {
-		int ret = 0;
-		do {
-			try {
-				escribirMenuAnimales();
-				System.out.print("Elija una opcion: ");
-				ret = teclado.nextInt();
-				teclado.nextLine();
-			} catch (Exception e) {
-				teclado.nextLine();
-				ret = -1;
-			}
-		} while ((ret < 0) && (ret > NUMERO_OPCIONES_MENU_ANIMALES));
-		return ret;
-	}
-	
-	private void ejecutarOpcionMenuAnimales(int opcion) {
+	private void ejecutarOpcionMenuInicial(int opcion) {
 		System.out.println(" ");
 		switch (opcion) {
 		case 0:
-			iniciar();
+			System.out.print("Adios!!!");
 			break;
 		case 1:
 			mostrarMascotas();
 			break;
 		case 2:
-			logica.GestorTablaPerros verPerros = new logica.GestorTablaPerros();
-			verPerros.menuVisualPerros();
-			break;
-		case 3:
-			logica.GestorTablaTortugas verTortugas = new logica.GestorTablaTortugas();
-			verTortugas.menuVisualTortugas();
+			int opcion1 = opcionMenuAnimales();
+			ejecutarOpcionMenuAnimales(opcion1);
 			break;
 		default:
 			System.out.println("Esta opcion no deberia salir...");
 		}
 	}
 
+	/**
+	 * This is Option 1 of the initial menu, in which I show all the pets
+	 */
 	private void mostrarMascotas() {
-		System.out.println("---------");
-		List <Perro> perros = gestorPerros.obtenerPerros();
+		System.out.println("--------------------------------");
+		List <Perro> perros = gestorPerros.obtenerTodos();
 		mostrarPerros(perros);
-		System.out.println("---------");
-		List <Gato> gatos = gestorGatos.obtenerGatos();
+		System.out.println("--------------------------------");
+		List <Gato> gatos = gestorGatos.obtenerTodos();
 		mostrarGatos(gatos);
-		System.out.println("---------");
-		List <Tortuga> tortugas = gestorTortugas.obtenerTortugas();
+		System.out.println("--------------------------------");
+		List <Tortuga> tortugas = gestorTortugas.obtenerTodos();
 		mostrarTortugas(tortugas);
 	}
 
@@ -157,35 +137,66 @@ public class Menu {
 	private void mostrarTortuga(Tortuga tortuga) {
 		System.out.println("Id: " + tortuga.getId());
 		System.out.println("Especie: " + tortuga.getEspecie());
-		System.out.println("Agua Dulce?: " + tortuga.isAguaDulce());
+		System.out.println("Agua Dulce?: " + tortuga.getTipoAgua());
 	}
 	
-	private void ejecutarOpcionMenuInicial(int opcion) {
+	/**
+	 * This is Option 2 of the initial menu, in which I show the pets by type
+	 * @return
+	 */
+	private int opcionMenuAnimales() {
+		int ret = 0;
+		do {
+			try {
+				escribirMenuAnimales();
+				System.out.print("Elija una opcion: ");
+				ret = teclado.nextInt();
+				teclado.nextLine();
+			} catch (Exception e) {
+				teclado.nextLine();
+				ret = -1;
+			}
+		} while ((ret < 0) || (ret > NUMERO_OPCIONES_MENU_ANIMALES));
+		return ret;
+	}
+	
+	private void escribirMenuAnimales() {
+		System.out.println("¿Qué información quieres ver?");
+		System.out.println("0. Volver");
+		System.out.println("1. Gatos");
+		System.out.println("2. Perros");
+		System.out.println("3. Tortugas");
+	}
+	
+	
+	
+	private void ejecutarOpcionMenuAnimales(int opcion) {
 		System.out.println(" ");
 		switch (opcion) {
 		case 0:
-			System.out.print("Adios!!!");
+			iniciar();
 			break;
 		case 1:
-			logica.GestorTablaGatos verGatos = new logica.GestorTablaGatos();
-			logica.GestorTablaPerros verPerros = new logica.GestorTablaPerros();
-			logica.GestorTablaTortugas verTortugas = new logica.GestorTablaTortugas();
-			verGatos.menuVisualGatos();
-			verPerros.menuVisualPerros();
-			verTortugas.menuVisualTortugas();
+			System.out.println("-----------------------------------");
+			List <Gato> gatos = gestorGatos.obtenerTodos();
+			mostrarGatos(gatos);
 			break;
 		case 2:
-			int opcion1 = opcionMenuAnimales();
-			ejecutarOpcionMenuAnimales(opcion1);
+			System.out.println("-----------------------------------");
+			List <Perro> perros = gestorPerros.obtenerTodos();
+			mostrarPerros(perros);
 			break;
-		default:
-			System.out.println("Esta opcion no deberia salir...");
+		case 3:
+			System.out.println("-----------------------------------");
+			List <Tortuga> tortugas = gestorTortugas.obtenerTodos();
+			mostrarTortugas(tortugas);
+			break;
 		}
 	}
 	
+	/**
+	 * This is Option 3 of the initial menu, in which I show the pets by Id
+	 */
 	
-	
-	
-
 }
 

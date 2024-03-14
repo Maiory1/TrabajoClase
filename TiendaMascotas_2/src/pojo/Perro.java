@@ -4,15 +4,10 @@ import java.util.Objects;
 
 public class Perro extends Mamifero {
 
-	private String nombre;
-	private String raza;
-	private boolean vacunado;
+	private boolean vacunado = false;
 	
 	/**
 	 * 
-	 * @param id
-	 * @param nombre
-	 * @param raza
 	 * @param vacunado
 	 */
 	public Perro(boolean vacunado) {
@@ -28,7 +23,7 @@ public class Perro extends Mamifero {
 	 * 
 	 * @return
 	 */
-	public boolean getVacunado() {
+	public boolean isVacunado() {
 		return vacunado;
 	}
 	
@@ -44,7 +39,7 @@ public class Perro extends Mamifero {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(nombre, raza, vacunado);
+		result = prime * result + Objects.hash(vacunado);
 		return result;
 	}
 
@@ -57,12 +52,12 @@ public class Perro extends Mamifero {
 		if (getClass() != obj.getClass())
 			return false;
 		Perro other = (Perro) obj;
-		return Objects.equals(nombre, other.nombre) && Objects.equals(raza, other.raza) && vacunado == other.vacunado;
+		return vacunado == other.vacunado;
 	}
 
 	@Override
 	public String toString() {
-		return "Perro [nombre=" + nombre + ", raza=" + raza + ", vacunado=" + vacunado + "]";
+		return "Perro [vacunado=" + vacunado + "]";
 	}
 	
 }
