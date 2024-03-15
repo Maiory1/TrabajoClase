@@ -8,19 +8,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import pojo.Tortuga;
+import pojo.Cocodrilo;
 import utils.DBUtils;
 
-public class GestorTablaTortugas implements GestorInterfaz<Tortuga> {
+public class GestorTablaCocodrilos implements GestorInterfaz<Cocodrilo>{
 	
 	/**
-	 * I get the list of Turtles by Select
+	 * I get the list of cocodrile by Select
+	 * @return
 	 */
-	public List<Tortuga> obtenerTodos()  {
+	public List<Cocodrilo> obtenerTodos(){
 		
-		List<Tortuga> tortugas = new ArrayList<Tortuga>();
+		List<Cocodrilo> cocodrilos = new ArrayList<Cocodrilo>();
 		
-		String sql = "select * from tortugas";
+		String sql = "select * from Cocodrilo";
 		
 		Connection connection = null;
 		Statement stm = null;
@@ -35,12 +36,13 @@ public class GestorTablaTortugas implements GestorInterfaz<Tortuga> {
 			resultSet = stm.executeQuery(sql);
 			
 			while (resultSet.next()) {
-				Tortuga tortuga = new Tortuga();
-				tortuga.setId(resultSet.getInt("id"));
-				tortuga.setEspecie(resultSet.getString("especie"));
-				tortuga.setTipoAgua(resultSet.getString("tipoAgua"));
+				Cocodrilo cocodrilo = new Cocodrilo();
+				cocodrilo.setId(resultSet.getInt("id"));
+				cocodrilo.setEspecie(resultSet.getString("especie"));
+				cocodrilo.setNumeroDientes(resultSet.getInt("numeroDientes"));
+				cocodrilo.setTipoAgua(resultSet.getString("tipoAgua"));
 				
-				tortugas.add(tortuga);
+				cocodrilos.add(cocodrilo);
 			}
 			
 		}catch (SQLException e) {
@@ -51,18 +53,15 @@ public class GestorTablaTortugas implements GestorInterfaz<Tortuga> {
 			cerrarconnectionBBDD(connection, stm, resultSet);
 		}
 		
-		return tortugas;
+		return cocodrilos;
 	}
-	
-	/**
-	 * I get the list of Turtles by Id
-	 */
-	@Override
-	public List<Tortuga> obtenerPorId(int id) {
 
-		List<Tortuga> tortugas = new ArrayList<Tortuga>();
+	@Override
+	public List<Cocodrilo> obtenerPorId(int id) {
 		
-		String sql = "select * from tortugas where id = ?";
+List<Cocodrilo> cocodrilos = new ArrayList<Cocodrilo>();
+		
+		String sql = "select * from Cocodrilo where id = ?";
 		
 		Connection connection = null;
 		Statement stm = null;
@@ -77,12 +76,13 @@ public class GestorTablaTortugas implements GestorInterfaz<Tortuga> {
 			resultSet = stm.executeQuery(sql);
 			
 			while (resultSet.next()) {
-				Tortuga tortuga = new Tortuga();
-				tortuga.setId(resultSet.getInt("id"));
-				tortuga.setEspecie(resultSet.getString("especie"));
-				tortuga.setTipoAgua(resultSet.getString("tipoAgua"));
+				Cocodrilo cocodrilo = new Cocodrilo();
+				cocodrilo.setId(resultSet.getInt("id"));
+				cocodrilo.setEspecie(resultSet.getString("especie"));
+				cocodrilo.setNumeroDientes(resultSet.getInt("numeroDientes"));
+				cocodrilo.setTipoAgua(resultSet.getString("tipoAgua"));
 				
-				tortugas.add(tortuga);
+				cocodrilos.add(cocodrilo);
 			}
 			
 		}catch (SQLException e) {
@@ -93,27 +93,27 @@ public class GestorTablaTortugas implements GestorInterfaz<Tortuga> {
 			cerrarconnectionBBDD(connection, stm, resultSet);
 		}
 		
-		return tortugas;
+		return cocodrilos;
 	}
 
 	@Override
-	public Tortuga addPet() {
+	public Cocodrilo addPet() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Tortuga eliminatePet() {
+	public Cocodrilo eliminatePet() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Tortuga modifyPet() {
+	public Cocodrilo modifyPet() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	/**
 	 * This is to close the connection with the database
 	 * Nothing should go in the catch
@@ -144,4 +144,5 @@ public class GestorTablaTortugas implements GestorInterfaz<Tortuga> {
 			}
 		}
 	}
+	
 }

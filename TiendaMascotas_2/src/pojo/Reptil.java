@@ -2,25 +2,10 @@ package pojo;
 
 import java.util.Objects;
 
-public class Tortuga extends Reptil {
-
-	private String especie;
-	private String tipoAgua;
+public abstract class Reptil extends Animal{
 	
-	/**
-	 * 
-	 * @param especie
-	 * @param tipoAgua
-	 */
-	public Tortuga(String especie, String tipoAgua) {
-		super();
-		this.especie = especie;
-		this.tipoAgua = tipoAgua;
-	}
-	
-	public Tortuga() {
-		super();
-	}
+	private String especie = null;
+	private String tipoAgua = null;
 	
 	/**
 	 * 
@@ -70,13 +55,13 @@ public class Tortuga extends Reptil {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Tortuga other = (Tortuga) obj;
+		Reptil other = (Reptil) obj;
 		return Objects.equals(especie, other.especie) && Objects.equals(tipoAgua, other.tipoAgua);
 	}
 
 	@Override
 	public String toString() {
-		return "Tortuga [especie=" + especie + ", tipoAgua=" + tipoAgua + "]";
+		return "Reptil [especie=" + especie + ", tipoAgua=" + tipoAgua + "]";
 	}
 	
 	

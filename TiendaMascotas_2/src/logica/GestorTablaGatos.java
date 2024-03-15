@@ -102,7 +102,25 @@ public class GestorTablaGatos implements GestorInterfaz<Gato> {
 		
 		return gatos;
 	}
-	
+
+	@Override
+	public Gato addPet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Gato eliminatePet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Gato modifyPet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/**
 	 * This is to close the connection with the database
 	 * Nothing should go in the catch
@@ -133,8 +151,6 @@ public class GestorTablaGatos implements GestorInterfaz<Gato> {
 			}
 		}
 	}
-
-	
 
 	
 }

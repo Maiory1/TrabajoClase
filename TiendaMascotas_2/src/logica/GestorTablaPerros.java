@@ -40,7 +40,7 @@ public class GestorTablaPerros implements GestorInterfaz<Perro> {
 				perro.setId(resultSet.getInt("id"));
 				perro.setNombre(resultSet.getString("nombre"));
 				perro.setRaza(resultSet.getString("raza"));
-				perro.setVacunado(resultSet.getBoolean("vacunado"));
+				perro.setVacunado(resultSet.getString("vacunado"));
 				
 				perros.add(perro);
 			}
@@ -84,7 +84,7 @@ public class GestorTablaPerros implements GestorInterfaz<Perro> {
 				perro.setId(resultSet.getInt("id"));
 				perro.setNombre(resultSet.getString("nombre"));
 				perro.setRaza(resultSet.getString("raza"));
-				perro.setVacunado(resultSet.getBoolean("vacunado"));
+				perro.setVacunado(resultSet.getString("vacunado"));
 				
 				perros.add(perro);
 			}
@@ -99,7 +99,27 @@ public class GestorTablaPerros implements GestorInterfaz<Perro> {
 		
 		return perros;
 	}
-	
+
+	@Override
+	public Perro addPet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Perro eliminatePet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Perro modifyPet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/**
 	 * This is to close the connection with the database
 	 * Nothing should go in the catch
@@ -130,5 +150,4 @@ public class GestorTablaPerros implements GestorInterfaz<Perro> {
 			}
 		}
 	}
-
 }

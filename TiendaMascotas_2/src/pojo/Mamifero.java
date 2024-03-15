@@ -7,18 +7,35 @@ public abstract class Mamifero extends Animal {
 	private String nombre = null;
 	private String raza = null;
 	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 	
+	/**
+	 * 
+	 * @param nombre
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getRaza() {
 		return raza;
 	}
 	
+	/**
+	 * 
+	 * @param raza
+	 */
 	public void setRaza(String raza) {
 		this.raza = raza;
 	}

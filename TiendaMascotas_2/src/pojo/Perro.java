@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class Perro extends Mamifero {
 
-	private boolean vacunado = false;
+	private String vacunado;
 	
 	/**
 	 * 
 	 * @param vacunado
 	 */
-	public Perro(boolean vacunado) {
+	public Perro(String vacunado) {
 		super();
 		this.vacunado = vacunado;
 	}
@@ -23,16 +23,16 @@ public class Perro extends Mamifero {
 	 * 
 	 * @return
 	 */
-	public boolean isVacunado() {
+	public String getVacunado() {
 		return vacunado;
 	}
 	
 	/**
 	 * 
-	 * @param vacunado
+	 * @param string
 	 */
-	public void setVacunado(boolean vacunado) {
-		this.vacunado = vacunado;
+	public void setVacunado(String string) {
+		this.vacunado = string;
 	}
 
 	@Override
@@ -52,12 +52,14 @@ public class Perro extends Mamifero {
 		if (getClass() != obj.getClass())
 			return false;
 		Perro other = (Perro) obj;
-		return vacunado == other.vacunado;
+		return Objects.equals(vacunado, other.vacunado);
 	}
 
 	@Override
 	public String toString() {
 		return "Perro [vacunado=" + vacunado + "]";
 	}
+
+	
 	
 }
